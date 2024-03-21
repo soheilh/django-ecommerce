@@ -4,9 +4,7 @@ from django.contrib.auth.models import User
 # Model for Admins
 class AdminUser(User):
     phone = models.CharField(max_length=11)
-    postal_code = models.CharField(max_length=20)
-    address = models.CharField(max_length=200)
-    field= models.CharField(max_length=20)
+    field = models.CharField(max_length=20)
     def save(self, *args, **kwargs):
         self.is_staff = True
         super().save(*args, **kwargs)
