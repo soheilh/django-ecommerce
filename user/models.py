@@ -37,3 +37,25 @@ class CustomerUser(User):
     class Meta:
         verbose_name = "Customer"
         verbose_name_plural = "Customers"
+
+# Model for Authors
+class AuthorUser(User):
+    bio = models.CharField(max_length=200)
+    telegram = models.CharField(max_length=32, blank=True, null=True)
+    twitter = models.CharField(max_length=50, blank=True, null=True)
+    instagram = models.CharField(max_length=50, blank=True, null=True)
+    facebook = models.CharField(max_length=100, blank=True, null=True)
+    def save(self, *args, **kwargs):
+        self.is_staff = True
+        super().save(*args, **kwargs)
+
+    class Meta:
+        verbose_name = "Author"
+        verbose_name_plural = "Authors"
+
+    def __str__(self):
+        user = self.get_full_name()
+        if user:
+            return user
+        else:
+            return self.username
