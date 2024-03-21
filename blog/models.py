@@ -10,7 +10,7 @@ class Category(models.Model):
     status = models.BooleanField(default=True)
 
     class Meta:
-        verbos_name_plural = "Categories"
+        verbose_name_plural = "Categories"
 
     def __str__(self):
         return self.name
