@@ -38,7 +38,7 @@ class CustomerUser(User):
 
 # Model for Authors
 class AuthorUser(User):
-    bio = models.CharField(max_length=200)
+    bio = models.TextField(blank=True, null=True)
     telegram = models.CharField(max_length=32, blank=True, null=True)
     twitter = models.CharField(max_length=50, blank=True, null=True)
     instagram = models.CharField(max_length=50, blank=True, null=True)
