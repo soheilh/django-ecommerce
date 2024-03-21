@@ -1,6 +1,7 @@
 from django.db import models
 from django.utils import timezone
 from user.models import CustomerUser
+from ckeditor.fields import RichTextField
 
 # Model for Category
 class Category(models.Model):
@@ -34,6 +35,7 @@ class Post(models.Model):
         ('d', 'Deleted'),
     ]
     status = models.CharField(max_length=2, choices=STATUS_CHOICES, default='p')
+    content = RichTextField(default='')
 
     def __str__(self):
         return self.title
