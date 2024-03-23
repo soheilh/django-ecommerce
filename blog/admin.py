@@ -20,8 +20,8 @@ admin.site.register(Post, PostAdmin)
 class CategoryAdmin(admin.ModelAdmin):
 	list_display = ('name', 'slug', 'status',)
 	list_filter = ('status',)
-	search_fields = ('name')
-	prepopulated_fields = {'slug':('title',)}
+	search_fields = ('name', )
+	prepopulated_fields = {'slug':('name',)}
 
 admin.site.register(Category, CategoryAdmin)
 admin.site.register(Comment)
