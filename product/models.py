@@ -1,4 +1,5 @@
 from django.db import models
+from user.models import CustomerUser
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.utils.html import format_html
 
@@ -57,3 +58,16 @@ class Product(models.Model):
 class Picture(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name="images")
     file = models.ImageField()
+
+# Model for Comments of products
+class Comment(models.Model):
+    user = models.ForeignKey(CustomerUser, on_delete=models.DO_NOTHING, related_name="comments")
+    product = models.ForeignKey(Product, on_delete=models.DO_NOTHING, related_name="comments")
+    body = models.TextField(blank=False)
+    score = models.IntegerField(default=1, validators=[MaxValueValidator(5), MinValueValidator(1)])
+    COMMENT_STATUS = (
+        ('p', 'Pending'),
+        ('a', 'Approved'),
+        ('r', 'Rejected'),
+    )
+    status = models.CharField(max_length=1, choices=COMMENT_STATUS, default='p')
