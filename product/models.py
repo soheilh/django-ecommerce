@@ -22,7 +22,7 @@ class Color(models.Model):
 # Model for Brand of products
 class Brand(models.Model):
     title = models.CharField(max_length=255)
-    picture = models.ImageField(upload_to="images")
+    picture = models.ImageField(upload_to="brands")
 
     def __str__(self):
         return self.title
@@ -42,7 +42,7 @@ STATUS_CHOICES =(
 
 class Product(models.Model):
     name = models.CharField(max_length=100, blank=False)
-    Category = models.ManyToManyField(Category, related_name="products")
+    category = models.ManyToManyField(Category, related_name="products")
     color = models.ForeignKey(Color, on_delete=models.DO_NOTHING, related_name="products")
     code = models.CharField(max_length=100)
     brand = models.ForeignKey(Brand, on_delete=models.DO_NOTHING, null=True)
