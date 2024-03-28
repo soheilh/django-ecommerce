@@ -56,7 +56,7 @@ class Product(models.Model):
 
 # Model for pictures of products
 class Picture(models.Model):
-    product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name="images")
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name="pictures")
     file = models.ImageField()
 
 # Model for Comments of products
