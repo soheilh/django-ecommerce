@@ -53,11 +53,12 @@ class Product(models.Model):
     sales_limit = models.IntegerField(default=5)
     status = models.CharField(max_length=1, choices=STATUS_CHOICES)
     weight = models.IntegerField()
+    available = models.IntegerField(default=0)
 
 # Model for pictures of products
 class Picture(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name="pictures")
-    file = models.ImageField()
+    file = models.ImageField(upload_to ='products')
 
 # Model for Comments of products
 class Comment(models.Model):

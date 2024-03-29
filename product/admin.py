@@ -21,7 +21,7 @@ class ProductAdmin(admin.ModelAdmin):
             'fields': ('name', 'category', 'code', 'brand', 'weight',)
         }),
         ('Default Type', {
-            'fields': ('color', 'price', 'offer', 'sales_limit')
+            'fields': ('color', 'price', 'offer', 'sales_limit', 'available')
         }),
         ('Sales', {
             'fields': ('count_sold',)
