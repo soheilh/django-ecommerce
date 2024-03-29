@@ -1,7 +1,7 @@
 from rest_framework import viewsets, permissions, status
 from rest_framework.response import Response
-from .models import Product, Comment
-from .serializers import ProductSerializer, ProductDetailSerializer, CommentSerializer
+from .models import Product, Comment, Category, Brand, Color
+from .serializers import ProductSerializer, ProductDetailSerializer, CommentSerializer, CategorySerializer, BrandSerializer, ColorSerializer
 
 # Create your views here.
 class ProductViewSet(viewsets.ModelViewSet):
@@ -35,4 +35,15 @@ class CommentViewSet(viewsets.ModelViewSet):
         product_id = self.kwargs['id']
         queryset = Comment.objects.filter(product_id=product_id)
         return queryset
-    
+
+class CategoryViewSet(viewsets.ReadOnlyModelViewSet):
+    queryset = Category.objects.all()
+    serializer_class = CategorySerializer
+
+class BrandViewSet(viewsets.ReadOnlyModelViewSet):
+    queryset = Brand.objects.all()
+    serializer_class = BrandSerializer
+
+class ColorViewSet(viewsets.ReadOnlyModelViewSet):
+    queryset = Color.objects.all()
+    serializer_class = ColorSerializer

@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Product, Picture, Comment
+from .models import Product, Picture, Comment, Category, Brand, Color
 
 class PictureSerializer(serializers.ModelSerializer):
     class Meta:
@@ -37,4 +37,19 @@ class ProductSerializer(serializers.ModelSerializer):
 class CommentSerializer(serializers.ModelSerializer):
     class Meta:
         model = Comment
+        fields = '__all__'
+
+class CategorySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Category
+        fields = '__all__'
+
+class BrandSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Brand
+        fields = '__all__'
+
+class ColorSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Color
         fields = '__all__'

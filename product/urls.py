@@ -4,7 +4,10 @@ from . import views
 
 router = routers.DefaultRouter()
 router.register('products', views.ProductViewSet, basename='products')
-router.register('(?P<id>\d+)/comment', views.CommentViewSet, basename='comment')
+router.register('(?P<id>\d+)/comments', views.CommentViewSet, basename='comments')
+router.register('categories', views.CategoryViewSet, basename='categories')
+router.register('brands', views.BrandViewSet, basename='brands')
+router.register('colors', views.ColorViewSet, basename='colors')
 
 urlpatterns = [
     path('', include(router.urls)),
