@@ -59,7 +59,7 @@ class AuthorUserAdmin(UserAdmin):
     )
     add_fieldsets = (
         ('Account Information', {
-            'fields': ('phone', 'password1', 'password2',)
+            'fields': ('username', 'password1', 'password2',)
         }),
     )
     readonly_fields = ('is_staff',)
