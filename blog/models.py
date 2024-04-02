@@ -47,6 +47,8 @@ class Post(models.Model):
 class Comment(models.Model):
     user = models.ForeignKey(CustomerUser, on_delete=models.CASCADE, related_name="user_comments")
     post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name="comments")
+    parent = models.ForeignKey('self', on_delete=models.CASCADE, related_name="replies", null=True, blank=True)
+    depth = models.PositiveIntegerField(default=0)
     body = models.TextField()
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
